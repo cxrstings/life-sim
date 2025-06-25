@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { months, days } from './Calendar';
+import { months, days, getCurrentDateTime } from './Calendar';
 
 function CharacterCreator({ onCharacterCreator }) {
     const [firstName, setFirstName] = useState('');
@@ -9,7 +9,7 @@ function CharacterCreator({ onCharacterCreator }) {
 
     // calculate birth year
     const birthYear = (birthMonth < 7 || (birthMonth === 7 && birthDay <= 11)) ? 2979 : 2980;
-    const age = 2998 - birthYear; // edit this to calculate current age when time is added?
+    const age = 2998 - birthYear; 
 
     const handleSubmit = () => {
         const character = {
@@ -21,6 +21,7 @@ function CharacterCreator({ onCharacterCreator }) {
             age,
             money: 0,
         };
+        console.log("Current Date and Time:", getCurrentDateTime());
         onCharacterCreator(character);
     };
 
